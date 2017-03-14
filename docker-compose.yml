@@ -1,0 +1,18 @@
+version: "3"
+services:
+  # mysql
+  mysql:
+    image: mysql:5.7.17
+    container_name: product_mysql
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    network_mode: bridge
+    environment:
+      - MYSQL_ROOT_PASSWORD='your password'
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+  # redis
+  redis:
+    network_mode: bridge
+    container_name: product_redis
+    image: redis:latest
